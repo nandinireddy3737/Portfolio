@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siva Nandini Yeddula | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0a192f;
+      --accent: #64ffda;
+      --text: #ccd6f6;
+      --bg-light: #112240;
+      --gradient: linear-gradient(90deg, #64ffda 0%, #0a192f 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    section {
+  scroll-margin-top: 90px; /* Adjust this value to match your header height */
+}
+html {
+  scroll-behavior: smooth;
+}
+    header {
+      background: rgba(10, 25, 47, 0.95);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(100,255,218,0.1);
+      border-bottom: 1px solid rgba(100,255,218,0.1);
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 2px;
+      animation: logo-fade 2s ease-in;
+    }
+    @keyframes logo-fade {
+      from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    nav ul li a:hover::after {
+      transform: scaleX(1);
+    }
+    nav ul li a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem 2rem 1rem;
+      background: linear-gradient(145deg, #0a192f, #0f2743);
+    }
+    .hero-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      box-shadow: 0 8px 32px rgba(100,255,218,0.15);
+      margin-bottom: 2rem;
+      animation: img-pop 1.2s;
+      background: #112240;
+    }
+    @keyframes img-pop {
+      from { opacity: 0; transform: scale(0.7);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      animation: fade-in 2s;
+    }
+    .gradient-name {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.5rem;
+      font-weight: 600;
+      animation: text-slide 2s ease;
+      display: inline-block;
+    }
+    @keyframes text-slide {
+      from { letter-spacing: 0.5em; opacity: 0;}
+      to { letter-spacing: normal; opacity: 1;}
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #a8b2d1;
+      margin-bottom: 2rem;
+      animation: fade-in 2s;
+    }
+    @keyframes fade-in {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      margin-top: 1rem;
+      box-shadow: 0 0 0 rgba(100,255,218,0.5);
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: var(--primary);
+      box-shadow: 0 0 20px rgba(100,255,218,0.5);
+    }
+    #about {
+      border-left: 6px solid var(--accent);
+      background: rgba(100,255,218,0.03);
+      box-shadow: 0 2px 12px rgba(100,255,218,0.05);
+      animation: about-slide 1.5s;
+    }
+    @keyframes about-slide {
+      from { opacity: 0; transform: translateX(-40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    #academics .card:hover {
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 20px 40px rgba(100,255,218,0.3);
+      border-color: var(--accent);
+    }
+    /* Unique effects for each technical skill icon */
+    .skill-card .skill-icon { transition: transform 0.5s; }
+    .skill-card.html:hover .skill-icon { animation: spin 0.8s linear; }
+    .skill-card.css:hover .skill-icon { animation: bounce 0.8s; }
+    .skill-card.js:hover .skill-icon { animation: pulse 0.8s; }
+    .skill-card.python:hover .skill-icon { animation: flip 0.8s; }
+    .skill-card.java:hover .skill-icon { animation: shake 0.8s; }
+    .skill-card.sql:hover .skill-icon { animation: wiggle 0.8s; }
+    .skill-card.c:hover .skill-icon { animation: swing 0.8s; }
+    .skill-card.android:hover .skill-icon { animation: tada 0.8s; }
+    .skill-card.colab:hover .skill-icon { animation: jello 0.8s; }
+    .skill-card.jupyter:hover .skill-icon { animation: rubberBand 0.8s; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+    @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.3);} }
+    @keyframes flip { 0%{transform:rotateY(0);} 100%{transform:rotateY(360deg);} }
+    @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-8px);} 75%{transform:translateX(8px);} }
+    @keyframes wiggle { 0%,100%{transform:rotate(0);} 25%{transform:rotate(-15deg);} 75%{transform:rotate(15deg);} }
+    @keyframes swing { 20%{transform:rotate(15deg);} 40%{transform:rotate(-10deg);} 60%{transform:rotate(5deg);} 80%{transform:rotate(-5deg);} 100%{transform:rotate(0);} }
+    @keyframes tada { 0%{transform:scale(1);} 10%,20%{transform:scale(0.9) rotate(-3deg);} 30%,50%,70%,90%{transform:scale(1.1) rotate(3deg);} 40%,60%,80%{transform:scale(1.1) rotate(-3deg);} 100%{transform:scale(1) rotate(0);} }
+    @keyframes jello { 0%,100%{transform:scale3d(1,1,1);} 30%{transform:scale3d(1.25,0.75,1);} 40%{transform:scale3d(0.75,1.25,1);} 50%{transform:scale3d(1.15,0.85,1);} 65%{transform:scale3d(0.95,1.05,1);} 75%{transform:scale3d(1.05,0.95,1);} }
+    @keyframes rubberBand { 0%{transform:scaleX(1);} 30%{transform:scaleX(1.25);} 40%{transform:scaleX(0.75);} 50%{transform:scaleX(1.15);} 65%{transform:scaleX(0.95);} 75%{transform:scaleX(1.05);} 100%{transform:scaleX(1);} }
+    /* Interpersonal Skills: Gradient border, animated background, fade-in bounce */
+    .interpersonal-grid .skill-card {
+      border: 2px solid;
+      border-image: linear-gradient(135deg, #64ffda 0%, #0a192f 100%) 1;
+      background: linear-gradient(120deg, rgba(100,255,218,0.08) 0%, rgba(10,25,47,0.2) 100%);
+      position: relative;
+      overflow: hidden;
+      animation: bgMove 3s linear infinite;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      animation: bounceIn 0.8s forwards, bgMove 3s linear infinite;
+    }
+    .interpersonal-grid .skill-card:nth-child(1) { animation-delay: 0.2s, 0s; }
+    .interpersonal-grid .skill-card:nth-child(2) { animation-delay: 0.4s, 0s; }
+    .interpersonal-grid .skill-card:nth-child(3) { animation-delay: 0.6s, 0s; }
+    .interpersonal-grid .skill-card:nth-child(4) { animation-delay: 0.8s, 0s; }
+    .interpersonal-grid .skill-card:nth-child(5) { animation-delay: 1s, 0s; }
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.05);
+      }
+      80% {
+        transform: translateY(5px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    #projects .card {
+      border-image: linear-gradient(90deg, #64ffda, #0a192f) 1;
+      border-width: 2px;
+      border-style: solid;
+      transition: border-image 0.3s;
+    }
+    #projects .card:hover {
+      border-image: linear-gradient(90deg, #0a192f, #64ffda) 1;
+    }
+    #achievements li {
+      opacity: 0;
+      animation: list-fade 1s forwards;
+    }
+    #achievements li:nth-child(1) { animation-delay: 0.2s;}
+    #achievements li:nth-child(2) { animation-delay: 0.4s;}
+    #achievements li:nth-child(3) { animation-delay: 0.6s;}
+    #achievements li:nth-child(4) { animation-delay: 0.8s;}
+    #achievements li:nth-child(5) { animation-delay: 1s;}
+    #achievements li:nth-child(6) { animation-delay: 1.2s;}
+    @keyframes list-fade {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .contact-link {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-link:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 24px rgba(100,255,218,0.2);
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .contact-link i {
+      font-size: 1.2rem;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-align: center;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      margin: 0.5rem auto 0 auto;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      border: 1px solid rgba(100,255,218,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .skill-card {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    ul.achievements {
+      color: #a8b2d1;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      padding-left: 1.2rem;
+    }
+    .project-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .project-links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    #contact {
+      text-align: center;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .gradient-name { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .contact-links { flex-direction: column; align-items: center; }
+      section { padding: 40px 10px; }
+      .hero-img { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"> SIVA NANDINI YEDDULA</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="@Nandini.jpg" alt="Siva Nandini Yeddula" class="hero-img" />
+    <p>Aspiring Full Stack Developer | Data Science enthusiast </p>
+    <a href="Nandini's Resume.pdf" class="btn" target="_blank">Download Resume</a>
+  </section>
+
+  <section id="about">
+    <h2>Career Objective</h2>
+    <p>Aspiring Full Stack Developer and Data Science enthusiast, driven to build intelligent and scalable digital solutions. Passionate about combining analytical skills with end-to-end software development to solve real-world problems. Seeking opportunities to contribute to impactful projects in a collaborative and innovation-focused environment.</p>
+  </section>
+
+
+  <section id="academics">
+    <h2>Academics</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>B.Tech in Computer Science and Business Systems</h3>
+        <p>Rajeev Gandhi Memorial College Of Engineering And Technology (Autonomous), Nandyal, Andhra Pradesh</p>
+        <p>2021-2025 | CGPA: 8.3</p>
+      </div>
+      <div class="card">
+        <h3>Intermediate</h3>
+        <p>Nucleus Junior College, Nandyal</p>
+        <p>2019-2021 | CGPA: 9.7</p>
+      </div>
+      <div class="card">
+        <h3>High School</h3>
+        <p>Bhashyam High School, Nandyal</p>
+        <p>2018 | CGPA: 9.7</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="card-grid">
+      <div class="card skill-card html"><i class="fab fa-html5 skill-icon"></i><h3>HTML</h3></div>
+      <div class="card skill-card css"><i class="fab fa-css3-alt skill-icon"></i><h3>CSS</h3></div>
+      <div class="card skill-card js"><i class="fab fa-js skill-icon"></i><h3>JavaScript</h3></div>
+      <div class="card skill-card python"><i class="fab fa-python skill-icon"></i><h3>Python</h3></div>
+      <div class="card skill-card sql"><i class="fas fa-database skill-icon"></i><h3>SQL</h3></div>
+          </div>
+    <h2 style="margin-top:2rem;">Interpersonal Skills</h2>
+    <div class="card-grid interpersonal-grid">
+      <div class="card skill-card"><h3>Listening Skills</h3></div>
+      <div class="card skill-card"><h3>Communication Skills</h3></div>
+      <div class="card skill-card"><h3>Time Management</h3></div>
+      <div class="card skill-card"><h3>Self Management</h3></div>
+      <div class="card skill-card"><h3>Team Work</h3></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Internships & Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Artificial Intelligence and Machine Learning Internship</h3>
+        <p>Edu Skills</p>
+      </div>
+            <div class="card project-card">
+        <h3>TO-DO App</h3>
+        <p>A productivity app built with HTML, CSS, and JS.</p>
+        <div class="project-links">
+          <a href="https://github.com/nandinireddy3737/nandinireddy3737.github.io.git" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="card project-card">
+        <h3>Detection of Knee Osteoarthritis using Convolutional Neural Networks.</h3>
+        <p>
+          Developed a deep learning model using Convolutional Neural Networks to classify X-ray images for signs of knee osteoarthritis. 
+          This project demonstrates the application of AI in medical imaging, aiming to assist early diagnosis and improve clinical efficiency.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements & Certifications</h2>
+    <ul class="achievements">
+      <li>Certified in Wipro TalentNext program on Java Full Stack</li>
+      <li>Awards in Sports competitions</li>
+      <li>Awards in Extra Curricular activities</li>
+      <li>Participated in Paper Presentation at Amogha 2K24</li>
+      <li>Participated in Coding Gala at SVR Engineering College, Nandyal</li>
+      <li>Participated in Smart India Internal Campus Hackathon 2K22</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:nandinireddy3737@gmail.com" class="contact-link">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+      <a href="tel:8008539179" class="contact-link">
+        <i class="fas fa-phone"></i>
+        <span>8008539179</span>
+      </a>
+      <a href="https://linkedin.com/in/contactnandinireddy" target="_blank" class="contact-link">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/nandinireddy3737" target="_blank" class="contact-link">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </section>
+</body>
+</html>
